@@ -6,7 +6,9 @@ import com.br.workshopmongo.workshopmongo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,10 +28,12 @@ public class UserResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<User> saveUser(@RequestBody User user){
+    public ResponseEntity<User> saveUser(@RequestBody UserDTO userDTO){
 
+        User user = UserDTO.fromDTO(userDTO);
         User user_save = userService.saveUser(user);
-        return ResponseEntity.ok().body(user_save);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+        return ResponseEntity.created(uri).body(user_save);
     }
 
 
