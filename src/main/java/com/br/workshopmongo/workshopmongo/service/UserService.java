@@ -20,8 +20,8 @@ public class UserService {
 
     public User saveUser(User user){return userRepository.save(user);}
 
-    public User findById(String id){return userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuario não encontrado"));
-
+    public User findById(String id){
+        return userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuario não encontrado"));
     }
 
 }

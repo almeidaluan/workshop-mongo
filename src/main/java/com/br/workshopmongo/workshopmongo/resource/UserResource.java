@@ -1,6 +1,5 @@
 package com.br.workshopmongo.workshopmongo.resource;
 
-import com.br.workshopmongo.workshopmongo.component.GenericException;
 import com.br.workshopmongo.workshopmongo.domain.User;
 import com.br.workshopmongo.workshopmongo.dto.UserDTO;
 import com.br.workshopmongo.workshopmongo.service.UserService;
@@ -9,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @RestController
