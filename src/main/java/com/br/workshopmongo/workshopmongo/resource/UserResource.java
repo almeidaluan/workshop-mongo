@@ -37,9 +37,10 @@ public class UserResource {
 
 
     @RequestMapping(method = RequestMethod.GET,value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable String id){
+    public ResponseEntity<UserDTO> findById(@PathVariable String id){
+
         User got_user = userService.findById(id);
-        return ResponseEntity.ok().body(got_user);
+        return ResponseEntity.ok().body(new UserDTO(got_user));
     }
 
 }
