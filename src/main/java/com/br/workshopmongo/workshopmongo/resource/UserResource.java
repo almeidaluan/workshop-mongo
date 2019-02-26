@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.xml.ws.Response;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,12 +37,18 @@ public class UserResource {
         return ResponseEntity.created(uri).body(user_save);
     }
 
-
     @RequestMapping(method = RequestMethod.GET,value = "/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable String id){
 
         User got_user = userService.findById(id);
         return ResponseEntity.ok().body(new UserDTO(got_user));
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE,value="/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String id){
+       userService.delete(id);
+       return ResponseEntity.noContent().build();
+
     }
 
 }

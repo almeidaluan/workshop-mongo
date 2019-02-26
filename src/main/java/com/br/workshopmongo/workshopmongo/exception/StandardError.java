@@ -25,6 +25,4 @@ public class StandardError {
         this.path = path;
     }
 
-
-
 }
