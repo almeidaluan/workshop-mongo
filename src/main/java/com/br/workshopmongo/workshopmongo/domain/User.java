@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @Document
-public class User implements Serializable {
+public class User implements Serializable,Cloneable {
 
     private static final long serialVersionUID = 1l;
 
@@ -37,5 +37,9 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    public Object clone() throws CloneNotSupportedException{
+        return (User)super.clone();
     }
 }
