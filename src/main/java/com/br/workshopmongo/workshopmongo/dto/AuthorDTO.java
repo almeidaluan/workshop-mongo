@@ -4,9 +4,14 @@ import com.br.workshopmongo.workshopmongo.domain.User;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class AuthorDTO {
+public class AuthorDTO implements Serializable {
+
+
+    private static final long serialVersionUID = 1l;
 
     private String id;
     private String name;
