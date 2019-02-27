@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @Document
-public class User implements Serializable,Cloneable {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1l;
 
