@@ -1,5 +1,7 @@
 package com.br.workshopmongo.workshopmongo.resource;
 
+import com.br.workshopmongo.workshopmongo.domain.Post;
+import com.br.workshopmongo.workshopmongo.dto.PostDTO;
 import com.br.workshopmongo.workshopmongo.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
