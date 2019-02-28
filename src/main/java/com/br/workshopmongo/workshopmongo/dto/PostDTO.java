@@ -14,10 +14,16 @@ public class PostDTO implements Serializable {
     private static final long serialVersionUID = 1l;
 
     private String id;
-    private LocalDate date;
+    private String date;
     private String title;
     private String body;
-//    private AuthorDTO author;
+    private AuthorDTO author;
+
+
+    public PostDTO(){
+
+    }
+
 
     public PostDTO(Post post){
 
@@ -25,11 +31,12 @@ public class PostDTO implements Serializable {
         date = post.getDate();
         title = post.getTitle();
         body = post.getBody();
+        author = post.getAuthor();
 
     }
 
     public static Post fromDTO(PostDTO postDTO){
-        return new Post(postDTO.getId(),postDTO.getDate(),postDTO.getTitle(),postDTO.getBody());
+        return new Post(postDTO.getId(),postDTO.getDate(),postDTO.getTitle(),postDTO.getBody(), postDTO.getAuthor());
     }
 
 }

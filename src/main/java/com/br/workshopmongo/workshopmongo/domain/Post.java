@@ -19,10 +19,10 @@ public class Post implements Serializable {
 
     @Id
     private String id;
-
-    private LocalDate date;
+    private String date;
     private String title;
     private String body;
+    private AuthorDTO author;
 
 
 }
