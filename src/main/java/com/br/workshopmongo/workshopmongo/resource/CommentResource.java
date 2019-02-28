@@ -3,8 +3,7 @@ package com.br.workshopmongo.workshopmongo.resource;
 import com.br.workshopmongo.workshopmongo.domain.Comment;
 import com.br.workshopmongo.workshopmongo.dto.CommentDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,7 +12,19 @@ import java.util.List;
 public class CommentResource {
 
 
-    public ResponseEntity<List<CommentDTO>> listaComentarios(){
+    @GetMapping
+    public ResponseEntity<List<CommentDTO>> listComments(){
         return null;
     }
+
+    @PostMapping
+    public ResponseEntity<Comment> saveComment (@RequestBody CommentDTO comment){
+        return null;
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Comment> findByIdComment(@PathVariable String id){
+        return null;
+    }
+
 }

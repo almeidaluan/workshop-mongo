@@ -1,14 +1,19 @@
 package com.br.workshopmongo.workshopmongo.resource;
 
 import com.br.workshopmongo.workshopmongo.domain.Post;
+import com.br.workshopmongo.workshopmongo.domain.User;
 import com.br.workshopmongo.workshopmongo.dto.PostDTO;
 import com.br.workshopmongo.workshopmongo.repository.PostRepository;
+import com.br.workshopmongo.workshopmongo.service.PostService;
+import com.br.workshopmongo.workshopmongo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.xml.ws.Response;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -19,6 +24,8 @@ public class PostResource {
         @Autowired
         private PostRepository postRepository;
 
+        @Autowired
+        private PostService postService;
 
         @GetMapping
         public ResponseEntity<List<PostDTO>> findAllPosts() {
@@ -26,6 +33,13 @@ public class PostResource {
             List<Post> listaPosts = postRepository.findAll();
             List<PostDTO>listaPostsDTO = listaPosts.stream().map( x -> new PostDTO(x)).collect(Collectors.toList());
             return ResponseEntity.ok().body(listaPostsDTO);
+        }
+
+
+        @GetMapping("/{id}")
+        public ResponseEntity<PostDTO> findById(@PathVariable String id){
+            Post post = postService.findById(id);
+            return ResponseEntity.ok().body(new PostDTO(post));
         }
 
         @PostMapping
