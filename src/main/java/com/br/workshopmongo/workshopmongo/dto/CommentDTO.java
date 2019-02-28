@@ -13,15 +13,17 @@ public class CommentDTO {
     private String id;
     private String text;
     private String date;
+    private AuthorDTO authorDTO;
 
     public CommentDTO(){
 
     }
 
-    public CommentDTO(Comment comment){
-        id = comment.getId();
-        text = comment.getText();
-        date = comment.getDate();
+    public CommentDTO(String id,String text,String date,AuthorDTO authorDTO){
+        this.id = id;
+        this.text = text;
+        this.date = date;
+        this.authorDTO = authorDTO;
     }
 
     public Comment fromDTO(CommentDTO commentDTO){

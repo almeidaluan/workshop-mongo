@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +19,7 @@ public class PostDTO implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author; // Assim fazemos da forma aninhada
+    private List<CommentDTO> listCommentDTO;
 
 
     public PostDTO(){
@@ -32,11 +34,12 @@ public class PostDTO implements Serializable {
         title = post.getTitle();
         body = post.getBody();
         author = post.getAuthor();
+        listCommentDTO = post.getListaComments();
 
     }
 
     public static Post fromDTO(PostDTO postDTO){
-        return new Post(postDTO.getId(),postDTO.getDate(),postDTO.getTitle(),postDTO.getBody(), postDTO.getAuthor());
+        return new Post(postDTO.getId(),postDTO.getDate(),postDTO.getTitle(),postDTO.getBody(), postDTO.getAuthor(), postDTO.getListCommentDTO());
     }
 
 }
