@@ -12,7 +12,11 @@ public class CommentDTO {
 
     private String id;
     private String text;
-    private LocalDate date;
+    private String date;
+
+    public CommentDTO(){
+
+    }
 
     public CommentDTO(Comment comment){
         id = comment.getId();

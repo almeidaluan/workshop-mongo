@@ -1,6 +1,8 @@
 package com.br.workshopmongo.workshopmongo.inicialization;
 
+import com.br.workshopmongo.workshopmongo.domain.Post;
 import com.br.workshopmongo.workshopmongo.domain.User;
+import com.br.workshopmongo.workshopmongo.dto.AuthorDTO;
 import com.br.workshopmongo.workshopmongo.repository.PostRepository;
 import com.br.workshopmongo.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +28,26 @@ public class instantiation implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+
+
         userRepository.deleteAll();
         postRepository.deleteAll();
 
-        User user = User.builder().id("1").email("email").name("name").build();
-        User user02 = User.builder().id("2").email("email02").name("name02").build();
+        User maria = new User(null, "Maria Brown", "maria@gmail.com");
+        User alex = new User(null, "Alex Green", "alex@gmail.com");
+        User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
-        userRepository.saveAll(Arrays.asList(user,user02));
+        userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null, "21/03/2018", "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
+        Post post2 = new Post(null, "23/03/2018", "Bom dia", "Acordei feliz hoje!", new AuthorDTO(maria));
 
 
-       // Post post = Post.builder().id("1").title("Melhores jogos 2019").body("conteudo dos melhores jogos").date(LocalDate.now()).author(new AuthorDTO(user)).build();
+        postRepository.saveAll(Arrays.asList(post1, post2));
+
+        maria.getPosts().addAll(Arrays.asList(post1, post2));
+        userRepository.save(maria);
 
 
-       // postRepository.save(post);
     }
 }

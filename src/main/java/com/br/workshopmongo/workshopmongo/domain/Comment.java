@@ -7,12 +7,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Document
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@Data
+@Document
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1l;
@@ -21,7 +20,7 @@ public class Comment implements Serializable {
     private String id;
 
     private String text;
-    private LocalDate date;
+    private String date;
 
 
 }

@@ -6,9 +6,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -23,6 +26,22 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+
+
+    /**
+     * nao quer carregar os posts quando fizer uma consulta de usuarios
+     * imagina se tem mil usuarios e pra cada 1 precisa vim a lista de posts dele
+     * quando carregar usuario vai vim só os dados basicos do usuario
+     */
+    @DBRef(lazy = true)
+    private List<Post> posts = new ArrayList<Post>();
+
+
+    public User(String id,String name,String email){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -39,7 +58,5 @@ public class User implements Serializable {
         return id.hashCode();
     }
 
-    public Object clone() throws CloneNotSupportedException{
-        return (User)super.clone();
-    }
+
 }
