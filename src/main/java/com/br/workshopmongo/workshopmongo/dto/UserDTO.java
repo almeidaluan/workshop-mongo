@@ -21,7 +21,7 @@ public class UserDTO implements Serializable {
 
 
     /**
-     * O VO de usuario so retorna id,name,email mas ele tem uma referencia no banco para posts que pode ser vista no mongo mas n é listado no endpoint de usuario
+     * O VO de usuario so retorna id,name,email mas o model de usuario possui uma referencia no banco para posts que pode ser vista no mongo mas n é listado no endpoint de usuario
      * caso queira ver os posts do usuario no endpoint, deve alterar o DTO para ter a variavel de posts
      */
 
