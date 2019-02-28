@@ -17,7 +17,7 @@ public class PostDTO implements Serializable {
     private String date;
     private String title;
     private String body;
-    private AuthorDTO author;
+    private AuthorDTO author; // Assim fazemos da forma aninhada
 
 
     public PostDTO(){
