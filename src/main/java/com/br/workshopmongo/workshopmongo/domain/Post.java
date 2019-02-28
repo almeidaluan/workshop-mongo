@@ -22,7 +22,7 @@ public class Post implements Serializable {
     private String date;
     private String title;
     private String body;
-    private AuthorDTO author;
+    private AuthorDTO author; // forma aninhada, copia do post cadastrado no banco
 
 
 }
