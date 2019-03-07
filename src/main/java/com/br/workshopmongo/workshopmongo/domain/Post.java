@@ -37,14 +37,6 @@ public class Post implements Serializable {
         this.body = body;
         this.author = author;
     }
-    public Post(String id, String date, String title, String body, AuthorDTO author,List<CommentDTO> listaComments) {
-        super();
-        this.id = id;
-        this.date = date;
-        this.title = title;
-        this.body = body;
-        this.author = author;
-        this.listaComments = listaComments;
-    }
+
 
 }
