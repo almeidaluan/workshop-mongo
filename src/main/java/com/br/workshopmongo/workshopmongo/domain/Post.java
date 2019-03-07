@@ -27,7 +27,7 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author; // forma aninhada
-    private List<CommentDTO> listaComments = new ArrayList<>(); // forma aninhada
+    private List<CommentDTO> listaComments; // forma aninhada
 
     public Post(String id, String date, String title, String body, AuthorDTO author) {
         super();
@@ -36,6 +36,15 @@ public class Post implements Serializable {
         this.title = title;
         this.body = body;
         this.author = author;
+    }
+    public Post(String id, String date, String title, String body, AuthorDTO author,List<CommentDTO> listaComments) {
+        super();
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.body = body;
+        this.author = author;
+        this.listaComments = listaComments;
     }
 
 }

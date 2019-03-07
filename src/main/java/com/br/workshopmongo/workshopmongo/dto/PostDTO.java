@@ -27,6 +27,7 @@ public class PostDTO implements Serializable {
     }
 
 
+
     public PostDTO(Post post){
 
         id = post.getId();

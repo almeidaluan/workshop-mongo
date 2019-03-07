@@ -6,6 +6,7 @@ import com.br.workshopmongo.workshopmongo.dto.PostDTO;
 import com.br.workshopmongo.workshopmongo.repository.PostRepository;
 import com.br.workshopmongo.workshopmongo.service.PostService;
 import com.br.workshopmongo.workshopmongo.service.UserService;
+import com.br.workshopmongo.workshopmongo.util.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,14 @@ public class PostResource {
         public ResponseEntity<PostDTO> findById(@PathVariable String id){
             Post post = postService.findById(id);
             return ResponseEntity.ok().body(new PostDTO(post));
+        }
+
+        @GetMapping("/titlesearch")
+        public ResponseEntity<List<PostDTO>> findByTitle(@RequestParam(value="text",defaultValue = "") String text){
+            text = URL.decodeURL(text);
+            List<Post> posts = postService.findByTitle(text);
+            List<PostDTO> listaPostsDTO = posts.stream().map( x -> new PostDTO(x)).collect(Collectors.toList());
+            return ResponseEntity.ok().body(listaPostsDTO);
         }
 
         @PostMapping
