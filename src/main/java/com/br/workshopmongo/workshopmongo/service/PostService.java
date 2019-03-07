@@ -14,6 +14,10 @@ public class PostService {
     @Autowired
     private PostRepository postRepository;
 
+    public List<Post> listaPostes(){
+        return postRepository.findAll();
+    }
+
     public Post findById(String id){
         return postRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
