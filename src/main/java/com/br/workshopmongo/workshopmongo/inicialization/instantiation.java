@@ -44,11 +44,11 @@ public class instantiation implements CommandLineRunner {
         Post post2 = new Post(null, "23/03/2018", "Bom dia", "Acordei feliz hoje!", new AuthorDTO(maria));
 
 
-        CommentDTO c1 = new CommentDTO(null,"Boa viagem mano!", "21/03/2018", new AuthorDTO(alex));
-        CommentDTO c2 = new CommentDTO(null,"Aproveite", "21/03/2018", new AuthorDTO(bob));
-        CommentDTO c3 = new CommentDTO(null,"Tenha um ótimo dia!", "21/03/2018", new AuthorDTO(alex));
+        CommentDTO c1 = new CommentDTO("1","Boa viagem mano!", "21/03/2018", new AuthorDTO(alex));
+        CommentDTO c2 = new CommentDTO("2","Aproveite", "21/03/2018", new AuthorDTO(bob));
+        CommentDTO c3 = new CommentDTO("3","Tenha um ótimo dia!", "21/03/2018", new AuthorDTO(alex));
 
-        post1.getListaComments().addAll(Arrays.asList(c1, c2));
+        post1.getListaComments().addAll(Arrays.asList(c1,c2));
         post2.getListaComments().addAll(Arrays.asList(c3));
 
 

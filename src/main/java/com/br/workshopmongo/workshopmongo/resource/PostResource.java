@@ -51,6 +51,21 @@ public class PostResource {
             return ResponseEntity.ok().body(listaPostsDTO);
         }
 
+    /**
+     * Retorna o poste por title ou body
+     * @param text
+     * @param body
+     * @return
+     */
+        @GetMapping("/titlebodysearch")
+        public ResponseEntity<List<PostDTO>> findByTitleOrBody(@RequestParam(value="text",defaultValue = "") String text,
+                                                               @RequestParam(value = "body",defaultValue = "") String body){
+            text = URL.decodeURL(text);
+            List<Post> posts = postService.findByTitleOrBody(text,body);
+            List<PostDTO> listaPostsDTO = posts.stream().map( x -> new PostDTO(x)).collect(Collectors.toList());
+            return ResponseEntity.ok().body(listaPostsDTO);
+        }
+
         @PostMapping
         public ResponseEntity<Post> savePost(@RequestBody PostDTO postDTO){
 
@@ -59,5 +74,6 @@ public class PostResource {
             return ResponseEntity.ok().body(post_save);
 
         }
+
 
 }

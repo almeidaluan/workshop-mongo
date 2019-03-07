@@ -27,7 +27,7 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author; // forma aninhada
-    private List<CommentDTO> listaComments; // forma aninhada
+    private List<CommentDTO> listaComments = new ArrayList<>(); // forma aninhada
 
     public Post(String id, String date, String title, String body, AuthorDTO author) {
         super();
