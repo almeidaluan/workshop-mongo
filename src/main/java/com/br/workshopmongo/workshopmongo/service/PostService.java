@@ -19,11 +19,11 @@ public class PostService {
     }
 
     public List<Post> findByTitle(String text){
-        return postRepository.searchTitle(text);
+        return postRepository.searchTitle(text).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
 
     public List<Post> findByTitleOrBody(String title,String body){
-        return postRepository.findByTitleOrBodyContaining(title,body);
+        return postRepository.findByTitleOrBodyContaining(title,body).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 }
